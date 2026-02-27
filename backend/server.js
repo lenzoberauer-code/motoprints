@@ -1,6 +1,7 @@
 const stripe = require("stripe")("DEIN_SECRET_KEY");
 const express = require("express");
 const cors = require("cors");
+require ("dotenv").config();
 
 const app = express();
 app.use(cors());
@@ -36,4 +37,5 @@ app.post("/checkout", async (req, res) => {
   res.json({ url: session.url });
 });
 
-app.listen(5000, () => console.log("Server läuft auf Port 5000"));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log("Server läuft"));
